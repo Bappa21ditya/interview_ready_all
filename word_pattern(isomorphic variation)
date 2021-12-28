@@ -1,0 +1,41 @@
+  bool wordPattern(string pattern, string s) {
+        
+        // making words
+         vector<string> v;
+        // word variable to store word in the string s
+        string word;
+        // making a string stream
+        stringstream iss(s);
+       // Push each word in vector
+        while (iss >> word)
+            v.push_back(word);
+      
+        
+        
+        
+        unordered_map<char,string>map1;
+        set<string>s2;
+        
+        if(v.size()!=pattern.size())
+            return false;
+        for(int i=0;i<pattern.size();i++)
+        {
+            if(map1.find(pattern[i])!=map1.end())
+            {
+                
+                if(map1[pattern[i]]!=v[i])
+                  return false;
+            }
+            else
+            {
+                if(s2.count(v[i])>0)
+                    return false;
+                else
+                {
+                    map1[pattern[i]]=v[i];
+                    s2.insert(v[i]);
+                }
+            }
+           }
+        return true;
+    }
