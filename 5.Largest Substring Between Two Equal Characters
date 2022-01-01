@@ -1,0 +1,19 @@
+ int maxLengthBetweenEqualCharacters(string s) {
+      
+        int res=-1;
+        unordered_map<char,int>mp;
+        for(int i=0;i<s.size();i++)
+        {
+            if(mp.find(s[i])!=mp.end())
+            {
+                res=max(res,i-mp[s[i]]-1);
+            }
+            else
+                mp[s[i]]=i;
+            
+            
+        }
+        return res;
+        
+        
+    }
