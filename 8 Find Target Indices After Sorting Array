@@ -1,0 +1,22 @@
+ vector<int> targetIndices(vector<int>& nums, int target) {
+        
+        
+        vector<int>ans;
+        int cn=0,rank=0;
+        // `cnt` is the frequency of `target`, `rank` is the sum of frequencies of all numbers < target
+        for(auto &i:nums)
+        {
+           if(i<target)
+             rank++;
+           if(i==target)
+               cn++;
+        }
+        while(cn--)
+        {
+            ans.push_back(rank);
+            rank++;
+        }
+        return ans;
+        
+    }
+};
