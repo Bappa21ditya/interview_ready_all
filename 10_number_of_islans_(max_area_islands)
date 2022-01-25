@@ -1,0 +1,44 @@
+int dfs(vector<vector<int>>& grid,vector<vector<bool>>&visited,int i,int j,int m,int n)
+{
+    if(i<0||i>=m||j<0|j>=n||visited[i][j]==true||grid[i][j]==0)
+        return 0;
+    visited[i][j]=true;
+     int top=dfs(grid,visited,i-1,j,m,n);
+    int  left=dfs(grid,visited,i,j-1,m,n);
+    int right=dfs(grid,visited,i+1,j,m,n);
+    int down=dfs(grid,visited,i,j+1,m,n);
+    
+    return 1+top+left+down+right;
+    
+    
+
+}
+class Solution {
+public:
+    int maxAreaOfIsland(vector<vector<int>>& grid) {
+    if(grid.empty())
+	  return 0;
+	  
+    int m=grid.size();
+	int n=grid[0].size();
+	
+   vector<vector<bool>>visited(m, vector<bool>(n, false));
+   int res=0;
+   for(int i=0;i<m;i++)
+   {
+   	for(int j=0;j<n;j++)
+   	{
+   		if(grid[i][j]==1 && visited[i][j]!=true)
+   		{
+   			int t=0;
+   			t=dfs(grid,visited,i,j,m,n);
+            res=max(res,t);
+   			
+		   }
+   		  
+	   }
+   }
+        return res;
+        
+    }
+};
