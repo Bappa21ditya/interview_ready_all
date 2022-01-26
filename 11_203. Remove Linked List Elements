@@ -1,0 +1,30 @@
+class Solution {
+public:
+    ListNode* removeElements(ListNode* head, int val) {
+        
+         ListNode* temp=head;
+         // base case 1 1 0 2 ,target=2
+    if(head==nullptr)
+        return head; 
+    // 1  target 1 if we dont write null condition it will try to access null  
+    while( head!=nullptr && head->val==val)
+    {
+        head=head->next;
+    }
+   // 0 1 1 2  target=1
+    
+    while(temp->next!=NULL)
+    {
+        if(temp->next->val==val)
+        {
+            temp->next=temp->next->next;
+        }
+        else
+        {
+            temp=temp->next;
+        }
+    }
+    return  head;
+        
+    }
+};
