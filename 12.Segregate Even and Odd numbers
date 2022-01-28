@@ -1,0 +1,52 @@
+void segregateEvenOdd(int arr[], int size)
+{
+int start = 0;
+int end = size-1;
+
+while(start < end) {
+if(arr[start] % 2 == 0)
+{
+start++;
+}
+else if (arr[start] % 2 == 1) {
+    
+    cout<<arr[start]<<" "<<arr[end]<<"\n";
+swap(arr[start], arr[end]);
+end--;
+}
+}
+
+}
+ 12, 10, 9, 45, 2, 10, 10, 45 
+9 45
+45 10
+45 10
+12 10 10 10 2 45 45 9 
+
+void rearrangeEvenAndOdd(int arr[], int n)
+{
+    // Variables
+    int j = -1;
+ 
+    // Quick sort method
+    for (int i = 0; i < n; i++) {
+ 
+        // If array of element
+        // is odd then swap
+        if (arr[i] % 2 == 0) {
+ 
+            // increment j by one
+            j++;
+ 
+            // swap the element
+            swap(arr[i], arr[j]);
+        }
+    }
+}
+{ 12, 10, 9, 45, 2, 10, 10, 45 };
+12 12
+10 10
+10 9
+10 45
+2 45
+12 10 10 10 2 9 45 45 
