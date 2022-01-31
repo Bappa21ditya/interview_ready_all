@@ -1,0 +1,77 @@
+Given a singly linked list of size N. The task is to left-shift the linked list by K nodes, where K is a given positive integer smaller than or equal to length of the linked list.
+
+Sample Input:
+
+N = 5
+
+List = 2 -> 4 -> 7 -> 8 -> 9
+
+K = 3
+
+Output: 8 -> 9 -> 2 -> 4 -> 7
+
+Explanation:
+
+Rotattion 1: 4 -> 7 -> 8 -> 9 -> 2
+Rotation 2: 7 -> 8 -> 9 -> 2 -> 4
+Rotation 3: 8 -> 9 -> 2 -> 4 -> 7 - Final output 
+*/
+#include <iostream>
+using namespace std;
+struct node
+{
+  int data;
+  node* next;
+}*head,*current;
+void insert(int k)
+{
+  struct node* t;
+  t=new node();
+  t->data=k;
+  t->next=NULL;
+  if(head==NULL)
+  {
+    head=t;
+    current=t;
+  }
+  current->next=t;
+  current=current->next;
+}
+void show()
+{
+  node* t=head;
+  while(t!=NULL)
+  {
+    cout<<t->data<<" ";
+    t=t->next;
+  }
+}
+void rotate(int ro)
+{
+ for(int i=0;i<ro;i++)
+  {
+    cout<<i<<"\n";
+  node* t;
+  t=head;
+  head=head->next;
+  current->next=t;
+  current=current->next;
+  }
+  current->next=NULL;
+}
+int main() {
+  int n;
+  cin>>n;
+  for(int i=0;i<n;i++)
+  {
+    int e;
+    cin>>e;
+    insert(e);
+  }
+  int ro;
+  cin>>ro;
+  show();
+   rotate(ro);
+   show();
+  // std::cout << "Hello World!\n";
+}
