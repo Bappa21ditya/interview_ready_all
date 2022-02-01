@@ -1,0 +1,38 @@
+class Solution {
+public:
+    ListNode* addTwoNumbers(ListNode* l1, ListNode* l2) {
+        int carry=0;
+        // prev is a dummy node 
+         ListNode *prev = new ListNode;
+        ListNode *curr = prev;
+          // ListNode* t=curr;
+        while(l1!=NULL || l2!=NULL)
+        {
+           int val1 = l1 ? l1->val : 0;
+            int val2 = l2 ? l2->val : 0;
+            int sum= val1+ val2+carry;
+            
+            carry=sum/10;
+            curr->next=new ListNode(sum%10);
+            curr=curr->next;
+            
+            if(l1!=NULL)
+            {
+            l1=l1->next;
+            }
+            if(l2!=NULL)
+            {
+            l2=l2->next;
+            }
+        }
+        
+        if(carry==1)
+        {
+             curr->next=new ListNode(1);
+        }
+        // need to move pointer from dummy node
+        curr = prev->next;
+        delete prev;
+        return curr;
+    }
+};
