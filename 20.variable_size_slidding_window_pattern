@@ -2,7 +2,7 @@
 identification:
 arr/string
 subarray
-k window given or needed
+window size / condition given need window size
 if window size given condition is asked
 if condition is given  k is asked
 
@@ -37,7 +37,7 @@ return ans
 
 
 
-
+1.
 #include <bits/stdc++.h>
 using namespace std;
 //  7, nums = [2,3,1,2,4,3]
@@ -150,7 +150,49 @@ int main()
     cout<<longest(s,n,k);
 }
 
-
+3.Longest Substring With Without Repeating Characters 
+#include <bits/stdc++.h>
+using namespace std;
+int longest(string s,int n)
+{
+    unordered_map<char,int>um;
+    int i=0,j=0;
+    int s1=0;
+    while(j<n)
+    {
+        um[s[j]]++;
+        
+        if(j-i+1==um.size())
+        {
+           s1=max(s1,j-i+1);
+           j++;
+        }
+        else if(um.size()<j-i+1)
+        {
+            while(um.size()<j-i+1)
+            {
+                um[s[i]]--;
+                // we need to erase it ,if not then map size will not decreases;
+                // https://ide.geeksforgeeks.org/1aridjb8Yz
+                  if(um[s[i]] == 0)
+                     um.erase(s[i]);
+                  i++;
+                 if(um.size()==j-i+1)
+                  {
+                      s1=max(s1,j-i+1);
+                   }
+            }
+            j++;
+        }
+    }
+    return s1;
+}
+int main()
+{
+    string s="kwwekw";
+    int n=s.size();
+    cout<<longest(s,n);
+}
 
 
 
