@@ -53,4 +53,49 @@ int main()
   cout<<maxi<<endl;
 
 }
-
+First negative integer in every window of size k 
+8
+12 -1 -7 8  -15 30 16 18
+3
+-1 -1 -7 -15 -15 0
+vector<long long> printFirstNegativeInteger(long long int A[],
+                                             long long int n, long long int k) {
+        
+         int j=0;
+       list<long long int >q;
+        vector<long long int>res;
+         int i=0; 
+        while(j<n)
+        {
+            if(A[j]<0)
+            {
+            q.push_back(A[j]);
+            }
+           
+            if(j-i+1<k)
+            {
+                j++;
+            }
+            else if(j-i+1==k)
+            {
+                if(q.size()==0)
+                {
+                    res.push_back(0);
+                }
+                else
+                {
+                    long long int t=q.front();
+                    res.push_back(t);
+                    if(A[i]==t)
+                    {
+                        q.pop_front();
+                    }
+                }
+                i++;
+                j++;
+              
+            
+            }
+            
+        }
+                    return res; 
