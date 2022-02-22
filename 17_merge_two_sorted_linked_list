@@ -1,0 +1,88 @@
+
+1  3 
+1 4 5
+1 1 2 4 5
+
+1 2 3 4
+null
+
+null
+1 2 3 4
+
+ 
+Node* sortedMerge(Node* a, Node* b)  
+{  
+    if(a==NULL) return b;
+    if(b==NULL) return a;
+    // code herestruct  Node* curr;
+    struct Node* head=new Node(0);
+    struct Node* curr=head;
+    
+    while(a!=NULL && b!=NULL)
+    {
+        if(a->data<b->data)
+        {
+           curr->next=a;
+           a=a->next;
+        }
+        else 
+        {
+            curr->next=b;
+            b=b->next; 
+        }
+         curr=curr->next;
+    }
+    
+    if(a!=NULL)
+    {
+       curr->next=a;
+    }
+    else if(b!=NULL)
+    {
+       curr->next=b; 
+    }
+   
+    return head->next;
+  
+}  
+
+
+Node* sortedMerge(Node* a, Node* b)  
+{  
+    if(a==NULL) return b;
+    if(b==NULL) return a;
+    // code herestruct  Node* curr;
+    struct Node* head=new Node(0);
+    struct Node* curr=head;
+    
+    while(a!=NULL && b!=NULL)
+    {
+        if(a->data<b->data)
+        {
+           curr->next=a;
+          curr=curr->next;
+           a=a->next;
+          curr->next=NULL;
+        }
+        else 
+        {
+            curr->next=b;
+          curr=curr->next;
+            b=b->next; 
+             curr->next=NULL;
+        }
+         
+    }
+    
+    if(a!=NULL)
+    {
+       curr->next=a;
+    }
+    else if(b!=NULL)
+    {
+       curr->next=b; 
+    }
+   
+    return head->next;
+  
+}  
