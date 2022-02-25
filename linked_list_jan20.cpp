@@ -98,3 +98,27 @@ int main()
 	show();
 }
 
+
+Insert Into Linked List
+LLNode* solve(LLNode* head, int pos, int val) {
+    LLNode* t=new LLNode(val);
+    t->next=nullptr;
+    LLNode* curr=head;
+    if(pos==0)
+    {
+        t->next=head;
+        head=t;
+
+    }
+    else
+      {
+          for(int i=0;i<pos-1;i++)
+          {
+             curr=curr->next;
+          }
+          t->next=curr->next;
+          curr->next=t;
+      }
+    return head;
+}
+
