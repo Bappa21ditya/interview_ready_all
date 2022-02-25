@@ -1,0 +1,44 @@
+Tree* solve(Tree* root) {
+    if(root!=NULL)
+    {
+     swap(root->left,root->right);  
+    solve(root->left);
+    solve(root->right);
+    }
+    return root;
+     
+    
+}
+
+Tree* solve(Tree* root) {
+    if(root!=NULL)
+    {
+      
+    solve(root->left);
+    solve(root->right);
+    swap(root->left,root->right); 
+    }
+    return root;
+     
+    
+}
+
+
+
+2.Count BST Nodes in a Range
+void s(Tree* root, int lo, int hi,int &res)
+ {
+      if(root!=NULL)
+    {
+          if(root->val>=lo && root->val<=hi)
+             res++;
+          s(root->left,lo,hi,res);
+          s(root->right,lo,hi,res);   
+    }
+ }
+int solve(Tree* root, int lo, int hi) {
+    int res=0;
+   s(root,lo,hi,res);
+   return res;
+    
+}
