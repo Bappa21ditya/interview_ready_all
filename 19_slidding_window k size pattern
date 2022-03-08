@@ -131,3 +131,43 @@ vector<long long> printFirstNegativeInteger(long long int A[],
     return ans;
         
     }
+    1456. Maximum Number of Vowels in a Substring of Given Length
+    class Solution {
+public:
+    int maxVowels(string s, int k) {
+        int n=s.size();
+        int i=0;
+        int j=0;
+        int maxi=0;
+        int res=0;
+        unordered_set<char>set;
+        string v="aeiou";
+        for(int i=0;i<5;i++)
+        {
+            set.insert(v[i]);
+        }
+        while(j<n)
+        {
+            if(set.find(s[j])!=set.end())
+            {
+               res++;
+            }
+            if(j-i+1<k)
+            {
+                j++;
+            }
+            else if(j-i+1==k)
+            {
+                maxi=max(maxi,res);
+                if(set.find(s[i])!=set.end())
+                {
+                    res--;
+                }
+                i++;
+                j++;
+            }
+        }
+        return maxi;
+        
+    }
+};
