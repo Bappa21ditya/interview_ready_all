@@ -1,0 +1,20 @@
+A property of a palindrome is that it can have at most one unique character that occurs odd number of times
+bool solve(string s) {
+
+    unordered_map<char,int>mp;
+    for(int i=0;i<s.size();i++)
+    {
+        mp[s[i]]++;
+    }
+    int flag=0;
+    for (auto i : mp)
+    {
+        int j= i.second;
+        if(j%2!=0)
+           flag++;
+    }
+    if(flag>1)
+      return false;
+    else
+      return true; 
+} 
