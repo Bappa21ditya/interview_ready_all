@@ -1,0 +1,15 @@
+int solve(vector<int>& r1) {
+    int res=0;
+    sort(r1.begin(),r1.end());
+    reverse(r1.begin(),r1.end());
+    // vector<int>r2;
+    int n=r1.size();
+    int m=n/3;
+    n=n-m;
+   for(int i=1;i<n;i=i+2)
+   {
+       res+=r1[i];
+   }
+   return res;
+    
+}
