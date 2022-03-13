@@ -1,0 +1,16 @@
+void s1(Tree* root,Tree* p,Tree* gp,int &res)
+ {
+    if(root==NULL)
+      return ;
+    if(gp!=NULL && gp->val%2==0)
+       res+=root->val;
+    s1(root->left,root,p,res);
+    s1(root->right,root,p,res);     
+ }
+int solve(Tree* root) {
+    int res=0;
+    s1(root,NULL,NULL,res);
+     return res;
+
+    
+}
