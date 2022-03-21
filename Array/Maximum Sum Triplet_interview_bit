@@ -1,0 +1,29 @@
+int Solution::solve(vector<int> &A) {
+    int n=A.size();
+    vector<int>suffix(n);
+    // 1 2 4 5 2
+    for(int i=n-1;i>=0;i--)
+    {
+        if(i==n-1)
+        {
+        suffix[i]=A[i];
+        }
+        else
+        {
+        suffix[i]=max(A[i],suffix[i+1]);
+        }
+    }
+set<int>s;
+int ans=0;
+s.insert(A[0]);
+//  2 5 3  1 4
+for(int i=1;i<n;i++)
+{
+    s.insert(A[i]);
+    auto it=s.find(A[i]);
+    if(it!=s.begin() && suffix[i]!=A[i])
+    ans=max(ans,((*--it)+A[i]+suffix[i]));
+
+}
+return ans;
+}
