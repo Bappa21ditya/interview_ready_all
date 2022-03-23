@@ -23,3 +23,7 @@ vector<int> Solution::plusOne(vector<int> &A) {
     return A;
 
 }
+// 0 0 1 2
+// res-1 2
+// 1 3 4
+//res-1 3 5
