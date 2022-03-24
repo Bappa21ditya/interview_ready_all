@@ -1,0 +1,39 @@
+int Solution::solve(int A, vector<int> &B) {
+    int sum=0;
+    for(int i=0;i<A;i++)
+    {
+        sum+=B[i];
+    }
+    int sum1=sum/3;
+    if(sum%3!=0)
+      return 0;
+    else
+    {  
+    vector<int>temp(A,0);
+    int y=0;
+    for(int i=A-1;i>=0;i--)
+    {
+        y+=B[i];
+        if(y==sum1)
+           temp[i]=1;
+           
+    }
+    int t=0;
+    int res=0;
+    for(int i=0;i<A;i++)
+    {
+         t+=B[i];
+        if(t==sum1)
+        {
+          for(int j=i+2;j<A;j++)
+          {
+              if(temp[j]==1)
+                 res++;
+          }
+        }
+    }
+    return res;
+    }
+}
+
+// https://www.youtube.com/watch?v=gAcyFvmqYBA
