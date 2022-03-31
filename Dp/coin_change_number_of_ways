@@ -1,0 +1,27 @@
+class Solution {
+public:
+    // int t[5001][500];
+     vector<vector<int>> t;
+    int solve(int amount,int n,vector<int>& coins)
+    {
+        if(amount==0)
+            return 1;
+        if(n==0)
+            return 0;
+        if(t[n][amount]!=-1)
+            return t[n][amount];
+         if(coins[n-1]>amount)
+        {
+            return t[n][amount]=solve(amount,n-1,coins);
+        }
+        else
+            return t[n][amount]= solve(amount,n-1,coins)+solve(amount-coins[n-1],n,coins);
+    }
+    int change(int amount, vector<int>& coins) {
+        int n=coins.size();
+        // memset(t,-1,sizeof(t));
+         t.resize(coins.size()+1,vector<int>(amount+1,-1));
+        return solve(amount,n,coins);
+        
+    }
+};
