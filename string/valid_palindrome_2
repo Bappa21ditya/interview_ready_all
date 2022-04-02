@@ -1,0 +1,30 @@
+/. skip one char from both side and check 
+// abcda   -- bcd  b!=d check cd  c!=d  not plaindrome and also from back side bc b!=c so not plaindrome
+class Solution {
+public:
+    bool is_paindrome(string s,int l,int r)
+    {
+        while(l<r)
+        {
+            if(s[l]!=s[r])
+                return false;
+            l++;
+            r--;
+        }
+        return true;
+    }
+    bool validPalindrome(string s) {
+        int i=0;
+        int j=s.size()-1;
+        while(i<j)
+        {
+            if(s[i]!=s[j])
+            {
+                return is_paindrome(s,i+1,j)|| is_paindrome(s,i,j-1);
+            }
+            i++;
+            j--;
+        }
+            return true;
+    }
+};
