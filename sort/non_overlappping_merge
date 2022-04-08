@@ -26,4 +26,47 @@ public:
         
     }
 };
-  
+  #include <bits/stdc++.h>
+using namespace std;
+bool comp(vector<int> &a,vector<int> &b) {
+	return a[1]<b[1];
+}
+int main() {
+    vector<vector<int>>intervals{{-52,31},{-73,-26},{82,97},{-65,-11},{-62,-49},{95,99},{58,95},{-31,49},{66,98},{-63,2},{30,47},{-40,-26}};
+     sort(intervals.begin(),intervals.end(),comp); 
+      for (int i = 0; i < intervals.size(); i++)
+    {
+        for (int j = 0; j < intervals[i].size(); j++)
+        {
+            cout << intervals[i][j] << " ";
+        }   
+        cout << endl;
+    }
+	// your code goes here
+	return 0;
+}
+-62 -49 
+-73 -26 
+-40 -26 
+-65 -11 
+-63 2 
+-52 31 
+30 47 
+-31 49 
+58 95 
+82 97 
+66 98 
+95 99 
+
+-73 -26 
+-65 -11 
+-63 2 
+-62 -49 
+-52 31 
+-40 -26 
+-31 49 
+30 47 
+58 95 
+66 98 
+82 97 
+95 99 
