@@ -1,0 +1,29 @@
+bool comp(vector<int> &a,vector<int> &b) {
+	return a[1]<b[1];  
+}
+class Solution {
+public:
+ 
+    
+    int eraseOverlapIntervals(vector<vector<int>>& intervals) {
+        vector<int>t;
+        int ans=-1;
+        // sort(intervals.begin(),intervals.end());
+        sort(intervals.begin(),intervals.end(),comp); 
+        t=intervals[0];
+        for(auto it:intervals)
+        {
+            if(it[0]<t[1])
+            {
+                ans++;
+            }
+            else
+            {
+                t=it;
+            }
+        }
+        return ans;
+        
+    }
+};
+  
