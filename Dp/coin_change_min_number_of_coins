@@ -1,0 +1,30 @@
+class Solution {
+public:
+     vector<vector<int>> t;
+    int solve(int amount,int n,vector<int>& coins)
+    {
+        
+        if(n==0)
+            return INT_MAX-1;
+        if(amount==0)
+            return 0;
+          if(t[n][amount]!=-1)
+            return t[n][amount];
+         if(coins[n-1]>amount)
+        {
+            return t[n][amount]=solve(amount,n-1,coins);
+        }
+        else
+            return t[n][amount]= min(solve(amount,n-1,coins),1+solve(amount-coins[n-1],n,coins));
+        
+    }
+    int coinChange(vector<int>& coins, int amount) {
+        int n=coins.size();
+        // memset(t,-1,sizeof(t));
+         t.resize(coins.size()+1,vector<int>(amount+1,-1));
+        int minCoins= solve(amount,n,coins);
+         return minCoins == INT_MAX - 1 ? -1 : minCoins; 
+        
+        
+    }
+};
