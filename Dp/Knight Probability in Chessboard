@@ -1,3 +1,36 @@
+mysolution
+class Solution {
+public:
+   double dp[26][26][101];
+    double  find(int n,int k,int r,int c)
+    {
+        if(r<0 || r>=n|| c<0||c>=n||k<0)
+            return 0;
+        if(k==0)
+            return 1;
+        if(dp[r][c][k] != 0)
+            return dp[r][c][k];
+        double p=find(n,k-1,r-1,c-2)+
+        find(n,k-1,r+1,c-2)+
+        find(n,k-1,r-2,c-1)+
+        find(n,k-1,r+2,c-1)+
+        find(n,k-1,r-2,c+1)+
+        find(n,k-1,r+2,c+1)+
+        find(n,k-1,r-1,c+2)+
+        find(n,k-1,r+1,c+2);
+         p=p/8;
+         dp[r][c][k]=p;
+          return p;        
+    }
+    double knightProbability(int n, int k, int row, int column) {
+        memset(dp, 0.0, sizeof(dp));
+        return find(n,k,row,column);
+        
+    }
+};
+
+// double thats why we use 0.0 instead of -1
+----------------------------------------------------------------------------------------------------------------------------
 class Solution {
 public:
     double find(int N, int K, int r, int c, vector<vector<vector<double>>>& dp)
