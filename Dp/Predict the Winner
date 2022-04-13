@@ -1,0 +1,31 @@
+class Solution {
+public:
+    long long  dp[21][21][2];
+    long long solve(vector<int>nums,int i,int j ,int choice)
+    {
+        
+        if(j<i)
+            return 0;
+        if(dp[i][j][choice]!=-1)
+            return dp[i][j][choice];
+        if(choice==0)
+            return dp[i][j][choice]=max(nums[i]+solve(nums,i+1,j,1),nums[j]+solve(nums,i,j-1,1));
+        else
+            return dp[i][j][choice]=min(solve(nums,i+1,j,0),solve(nums,i,j-1,0));
+    }
+    bool PredictTheWinner(vector<int>& nums) {
+        long long sum=0;
+        int n=nums.size();
+         memset(dp,-1,sizeof(dp));
+        for(int i=0;i<nums.size();i++)
+        {
+            sum+=nums[i];
+        }
+        long long s1=solve(nums,0,n-1,0);
+        long long s2=sum-s1;
+        if(s1>=s2)
+            return true;
+        else
+             return false;
+    }
+};
