@@ -1,0 +1,56 @@
+bool mysort(string s,string r){
+    return s+r>r+s;
+}
+string Solution::largestNumber(const vector<int> &A) {
+    vector<string>s;
+    for(int i=0;i<A.size();i++)
+    {
+        s.push_back(to_string(A[i]));
+    }
+    sort(s.begin(),s.end(),mysort);
+  string res="";
+  int t=0;
+
+  for(int i=0;i<A.size();i++)
+  {
+    res+=s[i];
+  }
+  int i=0; 
+    while(res[i]=='0' && i+1<res.size()){
+        i++;
+    }
+    return res.substr(i);
+}
+00000000
+substr(pos)
+substr(7)=0
+=========================================================================================================================================================================
+int mycompare(string x,string y)
+{
+    string XY=x.append(y);
+    string YX=y.append(x);
+
+    return XY.compare(YX)>0?1:0;
+}
+string Solution::largestNumber(const vector<int> &A) {
+    vector<string>s;
+    for(int i=0;i<A.size();i++)
+    {
+        s.push_back(to_string(A[i]));
+    }
+    sort(s.begin(),s.end(),mycompare);
+  string res="";
+  int t=0;
+
+  for(int i=0;i<A.size();i++)
+  {
+    res+=s[i];
+  }
+  int i=0; 
+    while(res[i]=='0' && i+1<res.size()){
+        i++;
+    }
+    return res.substr(i);
+    // return res;
+}
+
