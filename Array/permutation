@@ -1,0 +1,21 @@
+vector<int> Solution::nextPermutation(vector<int> &A) {
+    if(A.size()<=1)
+      return A;
+    int i=A.size()-2;
+    while(i>=0 && A[i]>=A[i+1])
+    {
+        i--;
+    }  
+    if(i>=0)
+    {
+    int j=A.size()-1;
+    while(A[j]<=A[i])
+    {
+        j--;
+    }
+    swap(A[i],A[j]);
+    }
+    reverse(A.begin()+i+1,A.end());
+    return A;
+
+}
