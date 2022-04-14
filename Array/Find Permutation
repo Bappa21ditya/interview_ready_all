@@ -1,0 +1,28 @@
+vector<int> Solution::findPerm(const string A, int B) {
+    vector<int>res;
+    stack<int>s;
+
+    for(int i=0;i<B;i++)
+    {
+          s.push(i+1);
+          if(A[i]=='I')
+            {
+                while(!s.empty())
+                {
+                    int x=s.top();
+                    s.pop();
+                    res.push_back(x);
+                }
+
+            }
+            
+    }
+    // s.push(B);
+    while(!s.empty())
+    {
+        int x=s.top();
+        s.pop();
+        res.push_back(x);
+    }
+    return res;
+}
