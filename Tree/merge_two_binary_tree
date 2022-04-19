@@ -1,0 +1,56 @@
+class Solution {
+public:
+    
+    TreeNode* recurs(TreeNode* root1,TreeNode* root2)
+    {
+        TreeNode* temp;
+        if(root1==NULL&&root2==NULL)
+        {
+           return NULL;
+            
+        }
+     else if(root1!=NULL&&root2!=NULL)
+        {
+          temp=new TreeNode();
+         temp->val=root1->val+root2->val;
+         temp->right=recurs(root1->right,root2->right);
+         temp->left=recurs(root1->left,root2->left);
+        }  
+        else if(root1!=NULL)
+        {
+              temp=new TreeNode();
+         temp->val=root1->val;
+         temp->right=recurs(root1->right,root2);
+         temp->left=recurs(root1->left,root2);  
+        }
+        else
+        {
+         temp=new TreeNode();
+         temp->val=root2->val;
+         temp->right=recurs(root1,root2->right);
+         temp->left=recurs(root1,root2->left);  
+        }
+        
+        return temp;
+    }
+    
+    
+    
+    
+    
+    TreeNode* mergeTrees(TreeNode* root1, TreeNode* root2) {
+        return recurs(root1,root2);
+    }
+};
+---------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+TreeNode* mergeTrees(TreeNode* root1, TreeNode* root2) {
+    if(root1==nullptr) return root2;
+    if(root2==nullptr) return root1;
+    
+    root1->val += root2->val;
+    root1->left = mergeTrees(root1->left,root2->left);
+    root1->right = mergeTrees(root1->right,root2->right);
+    
+    return root1;
+}
