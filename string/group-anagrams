@@ -1,0 +1,40 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+int main() {
+    // vector<vector<string>> groupAnagrams(
+   vector<string> s1={"eat","tea","tan","ate","nat","bat"} ;
+    vector<vector<string>> ans;
+    sort(s1.begin(),s1.end());
+    // for(int i=0;i<s1.size();i++)
+    // {
+    //     cout<<s1[i]<<" "; 
+    // }
+    
+    unordered_map<string, vector<string>> M;
+    
+    
+    // ate->eat,tea,ate
+    // ant-tan,nat
+    // bat-bat,
+    for(int  i = 0; i < s1.size(); i++)
+        {
+            string str = s1[i];
+            sort(s1[i].begin(), s1[i].end()); // Sorting the string
+            M[s1[i]].push_back(str);  // Sorted string is the key and the value is the initial string
+        }
+        for(auto i=M.begin();i!=M.end();i++)
+        {
+            ans.push_back(i->second);
+        }
+        for(int i=0;i<ans.size();i++)
+        {
+            for(int j=0;j<ans[i].size();j++)
+            {
+                cout<<ans[i][j]<<" ";
+            }
+            cout<<endl;
+        }
+	// your code goes here
+	return 0;
+}
