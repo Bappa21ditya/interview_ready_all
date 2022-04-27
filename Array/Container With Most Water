@@ -1,0 +1,32 @@
+
+Algorithm: 
+Keep two index, first = 0 and last = n-1 and a value max_area that stores the maximum area.
+Run a loop until first is less than the last.
+Update the max_area with maximum of max_area and min(array[first] , array[last])*(last-first)
+if the value at array[first] is greater the array[last] then update last as last – 1 else update first as first + 1
+Print the maximum area.
+
+class Solution {
+public:
+    int maxArea(vector<int>& height) {
+        int l=0;
+        int n=height.size();
+        int len;
+        int r=n-1;
+        int area=0;
+        int res=0;
+        while(l<r)
+        {
+            len=r-l;
+            area=min(height[l],height[r])*len;
+            res=max(res,area);
+            if(height[l]<height[r])
+                l++;
+            else
+                r--;
+        }
+        return res;
+        
+        
+    }
+};
