@@ -1,0 +1,36 @@
+class Solution {
+public:
+    string re(string h,string res)
+    {
+            string t="";
+            for(int i=0;i<res.size();i++)
+            {
+                if(h[i]!=res[i])
+                    break;
+                else
+                    t.push_back(res[i]);
+            }
+            res=t;
+        
+        return res;
+    }
+        
+    
+    string longestCommonPrefix(vector<string>& strs) {
+        sort(strs.begin(),strs.end());
+        if(strs.size()==0)
+             return "";
+        string res=strs[0];
+        if(strs.size()==1)
+             return res;
+        string ans="";
+        for(int i=1;i<strs.size();i++)
+        {
+            string g=strs[i];
+           ans=re(g,res);
+            
+        }
+        return ans;
+        
+    }
+};
