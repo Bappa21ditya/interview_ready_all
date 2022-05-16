@@ -1,0 +1,50 @@
+class Solution {
+public:
+    int height(TreeNode* root)
+    {
+        if(root==NULL)
+            return 0;
+        
+           int x= height(root->left);
+            int y=height(root->right);
+            return 1+max(x,y); 
+        // return max(1+ height(root->left), 1+ height(root->right));
+          
+    }
+    void sum(TreeNode* root,int height,int &ans)
+    {
+      if(root==NULL)
+          return ;
+      if(height==1)
+      {
+          ans=ans+root->val;
+      }
+        sum(root->left,height-1,ans);
+        sum(root->right,height-1,ans);
+    }
+    int deepestLeavesSum(TreeNode* root) {
+        int z= height(root);
+        int ans=0;
+         sum(root,z,ans);
+        return ans;
+        
+    }
+};
+========================================================================================================================================================================
+ int max_depth;
+    int deepestLeavesSum(TreeNode* root) {
+        max_depth = depthHelper(root);
+        return sumHelper(root, 0);
+    }
+    
+    int sumHelper (TreeNode* root, int depth) {
+        if(!root) return 0;
+        if(depth==max_depth-1) return root->val;
+        return sumHelper(root->left, depth+1) +
+            sumHelper(root->right, depth+1);
+    
+    }
+    int depthHelper(TreeNode* root) {
+        if(!root) return 0;
+        return max(1+ depthHelper(root->left), 1+ depthHelper(root->right));
+    }
