@@ -1,0 +1,32 @@
+class Solution {
+public:
+    int divisorSubstrings(int num, int k) {
+        
+        vector<int>v;
+        int p=num;
+        int res=0;
+        while(num!=0)
+        {
+            int t=num%10;
+            v.push_back(t);
+            num=num/10;
+        }
+        reverse(v.begin(),v.end());
+        for(int i=0;i<v.size()-k+1;i++ )
+        {
+             int r=v[i];
+            for(int j=1;j<k;j++)
+            {
+            r=r*10+v[i+j];
+            }
+            if(r==0)
+                continue;
+            else if(p%r==0)
+                res++;
+            
+        }
+        return res;
+    }
+};
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------
+we can solve using slidding window
