@@ -1,0 +1,26 @@
+class Solution {
+public:
+    vector<vector<int>>res;
+    void solve(vector<int>num,vector<int>output)
+    {
+        if(num.size()==0)
+        {
+            res.push_back(output);
+            return;
+        }
+        vector<int>op1=output;
+        vector<int>op2=output;
+        int x=num[0];
+        op1.push_back(x);
+        num.erase(num.begin());
+        solve(num,op1);
+        solve(num,op2);
+        
+    }
+    vector<vector<int>> subsets(vector<int>& nums) {
+        vector<int>output;
+        solve(nums,output);
+        return res;
+        
+    }
+};
