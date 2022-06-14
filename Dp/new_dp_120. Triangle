@@ -2,8 +2,8 @@ class Solution {
 public:
     int dfs(int i,int j,int n,vector<vector<int>>&triangle, vector<vector<int>>& t)
     {
-        if(i==n)
-            return 0;
+        if(i==n-1)
+            return t[i][j];
         if(t[i][j]!=-1)
             return t[i][j];
         int left=triangle[i][j]+dfs(i+1,j,n,triangle,t);
