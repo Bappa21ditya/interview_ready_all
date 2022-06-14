@@ -1,0 +1,19 @@
+class Solution {
+public:
+    int dfs(int i,int j,int n,vector<vector<int>>&triangle, vector<vector<int>>& t)
+    {
+        if(i==n)
+            return 0;
+        if(t[i][j]!=-1)
+            return t[i][j];
+        int left=triangle[i][j]+dfs(i+1,j,n,triangle,t);
+        int right=triangle[i][j]+dfs(i+1,j+1,n,triangle,t);
+        return t[i][j]=min(left,right);
+        
+    }
+    int minimumTotal(vector<vector<int>>& triangle) {
+        int n=triangle.size();
+        vector<vector<int>> t(n, vector<int>(n, -1));
+        return dfs(0,0,n,triangle,t);
+    }
+};
