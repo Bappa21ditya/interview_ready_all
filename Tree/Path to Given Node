@@ -1,0 +1,20 @@
+void find(TreeNode* A,int B,vector<int>res,vector<int>&ans)
+ {
+     if(!A)
+       return;
+     if(A->val==B)
+     {
+         res.push_back(B);
+         ans=res;
+     }  
+     res.push_back(A->val);
+     find(A->left,B,res,ans);
+     find(A->right,B,res,ans);
+     
+ }
+vector<int> Solution::solve(TreeNode* A, int B) {
+    vector<int>res;
+    vector<int>ans;
+    find(A,B,res,ans);
+    return ans;
+}
