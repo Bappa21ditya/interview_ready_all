@@ -1,0 +1,22 @@
+ int dfs(TreeNode* root,int maxval)
+    {
+        
+        if(root==NULL)
+        {
+            return 0;
+        }
+        int ans=0;
+        if(root->val >= maxval)
+           {
+               maxval=root->val;
+               ans=1;
+           }
+            ans+=dfs(root->left,maxval);
+            ans+=dfs(root->right,maxval);
+         return ans;      
+        }
+    
+    int goodNodes(TreeNode* root) {
+         return dfs(root,root->val);
+    }
+};
