@@ -1,0 +1,23 @@
+public int sumOfLeftLeaves(TreeNode root) {
+        int sum=0;
+        if(root==null){
+            return 0;
+        }
+        if(root.left!=null && root.left.left==null && root.left.right==null ){
+            sum=root.left.val;
+        }
+        sum+=sumOfLeftLeaves(root.left);
+        sum+=sumOfLeftLeaves(root.right);
+        return sum;
+    }
+    
+    
+    
+    -------------------------------------
+    wrong
+      if(root.left!=null && root.left.left==null && root.left.right==null ){
+            return root.left.val;
+        }
+        return sumOfLeftLeaves(root.left)+sumOfLeftLeaves(root.right);
+        
+        beacuse we are not consedaring the left reult we are just traversing along right side afrter getting the result
