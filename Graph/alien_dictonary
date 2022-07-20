@@ -1,0 +1,84 @@
+#include <bits/stdc++.h>
+using namespace std;
+stack<int>st;
+
+void dfs(int src, vector<int> adj[], vector<int>&vis)
+{
+    
+    vis[src]=1;
+    
+    for(auto it:adj[src])
+    {
+        if(vis[it]==0)
+        {
+            dfs(it,adj,vis);
+        }
+    }
+    // cout<<char(src+'a')<<"\n";
+    
+    st.push(src);
+}
+    
+int main() {
+	// your code goes here
+	int n=5;
+	int k=4;
+	vector<string>word{"baa","abcd","abca","cab","cad"};
+	vector<int> adj[k];
+	
+	for(int i=0;i<n-1;i++)
+	{
+	    string s1=word[i];
+	    string s2=word[i+1];
+	    int m=0,n=0;
+	   for(int j=0;j<min(s1.length(),s2.length());j++) 
+	   {
+	       if(s1[j]!=s2[j])
+	       {
+	         adj[s1[j]-'a'].push_back(s2[j]-'a');
+	         break;
+	       }
+	         
+	   }
+	   
+	   
+	}
+	
+// 	 for(int i=0;i<k;i++)
+//     {
+//         cout<<char(i+'a')<<"";
+//         for(auto x: adj[i])
+//         {
+//             cout<<"->"<<char(x+'a');
+//         }
+//         cout<<"\n";
+//     }
+	
+	vector<int>vis(k,0);
+	for(int i=0;i<k;i++)
+	{
+    if(vis[i]==0)
+    {
+      dfs(i,adj,vis);
+    }
+	}
+// 	 vector<int> vis(26,0);
+//         stack<int> st;
+//         for(int i=0;i<26;i++){
+//             if(!vis[i]) topo(st,i,vis,adj);
+//         }
+	
+	string res="";
+	cout<<st.size()<<"\n";
+	while(!st.empty())
+	{
+	    int i=st.top();
+	    st.pop();
+	    
+	   // cout<<char(i+'a')<<"\n";
+	    res.push_back(i+'a');
+	}
+	
+ 	cout<<res<<endl;
+	return 0;
+}
