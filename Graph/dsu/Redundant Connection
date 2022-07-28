@@ -1,0 +1,73 @@
+//const int N = 1e5 +2;
+class Solution {
+public:   
+int p[1001];
+int    rank1[1001];
+void mark(int n)
+{
+    for(int i=0;i<1001; i++)
+    {
+    
+    p[i]=i;
+    rank1[i]=1;
+}
+}
+    
+int find(int a)
+    {
+        
+      if(p[a]==a)
+          return a;
+       return  p[a]=find(p[a]);
+   }
+void union1(int a,int b)
+{
+    int x=find(a);
+    int  y=find(b);
+    
+    if(x!=y)
+    {
+        if(rank1[x]<rank1[y])
+        {
+            p[x]=y;
+        }
+        else if(rank1[x]>rank1[y])
+        {
+            p[y]=x;
+        }
+        else
+        {
+            p[y]=x;
+            rank1[x]=rank1[x]+1;
+        }
+    }
+}
+    vector<int> findRedundantConnection(vector<vector<int>>& edges) {
+        int n=edges.size();
+        vector<int>res;
+        mark(n);
+        for(int i=0;i<n;i++)
+        {
+            // vector<int>data=edges[it];
+            int x=edges[i][0];
+            int y=edges[i][1];
+            
+            int a=find(x);
+            int b=find(y);
+            
+            if(a==b)
+            {
+                res.push_back(edges[i][0]);
+                res.push_back(edges[i][1]);
+        
+            }
+            else
+               union1(x,y); 
+            
+            
+        }
+        
+        return res;
+        
+    }
+};
