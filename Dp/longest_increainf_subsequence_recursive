@@ -1,0 +1,101 @@
+Credits to Aditya Verma's DP series which has helped me in being comfortable with DP concepts.
+This DP problem can be better understood by first writing the Recursive solution then deriving tabular approach from recursive solution.
+The recursive solution applies brute force approach to break down problem into subproblems.
+Just like knapsack we can start tackling the array from the last element. We will first write the function definition of the recursive function. I have taken it as solve2(). Since the question asks to return length of longest increasing subsequence I take the return type of function as int. Next I want to know the parameters, obviously the nums array will be there and the element I am currently tackling will be there as nums and int i respectively. But note that I need another parameter to decisively tackle the current element as part of LIS or not and that will be the prev element for the LIS. This because based on prev element I will decided if the current element will be part of LIS or not. If this prev element is not taken then I will have no way to judge or tackle the current element. Hence based on this my current recursive definition will take 3 parameters, nums, int i and int prev [index of previous element part of LIS. It will be equal to nums.length for 1st iteration].
+Next I derive the base condition. The base condition will be derived for smallest valid input. Which in our case will be when array has 0 element or when we are tackling i == 0. The LIS for array with 0 elements = 0 hence base condition is returning 0.
+Next we come up with our choice diagram which is essentially the rest of the code.
+Since our current element will have following choices : if element < num[prev] then we have two choices either take the element in LIS or not take element in LIS. Both will result in processing of the current element and us moving on to next element which will be i-1. Now for 1st choice when we take the element, the LIS will increase in size by 1 as well as the previous will get updated to current element.
+For 2nd choice when element is not picked in LIS, the previous remains the same.
+This choice diagram is denoted by code:
+
+if(prev == nums.length || nums[i-1] < nums[prev])
+        {
+            return Math.max(solve2(nums, i-1, prev), solve2(nums,  i-1, i-1) + 1);
+        }
+Note we have another condition prev == nums.length, for the 1st iteration.
+Now comes the case if the current element being tackled is either equal to previous element or greater than, in this case the element does not forms part of LIS in any condition hence we have just one choice to not take the element and prev remaining intact. This is denoted by this part of code:
+
+else
+        {
+            return solve2(nums, i-1, prev);
+        }
+Thats it. This forms the recursive solution.
+
+public int lengthOfLIS(int[] nums) {
+        //return solve(nums); 
+        return solve2(nums, nums.length, nums.length);
+    }
+
+ public int solve2(int nums[], int i, int prev)
+    {
+        if(i <= 0)
+        {
+            return 0;
+        }
+        if(prev == nums.length || nums[i-1] < nums[prev])
+        {
+            return Math.max(solve2(nums, i-1, prev), solve2(nums,  i-1, i-1) + 1);
+        }
+        else
+        {
+            return solve2(nums, i-1, prev);
+        }
+    }
+Once you have the recursive solution the tabular approach is straight forward.
+Step 1. you create a matrix of dimension equal to variables that are changing in the recursion. Since in recursion only 2 variables are changing, i and prev, we will have a 2d matrix. The maximum value of i is nums.length and of prev [which is an index of previous element of LIS] is nums.length. So you make a matrix of length = nums.length+1.
+Step 2. You initialize for i == 0 t[i][j] = 0. As this was the base condition, read the recursive code.
+Step 3. Apply two loops around the rest of the code and convert prev -> j and i -> i and change solve() to t[i][j] as shown here:
+
+for(int i =1; i< nums.length+1; i++)
+        {
+            for(int j =1; j<nums.length+1; j++)
+            {
+                if(j == nums.length || nums[i-1] < nums[j])
+                {
+                    t[i][j] = Math.max(t[i-1][j], t[i-1][i-1]+1);
+                }
+                else
+                    t[i][j] = t[i-1][j];
+                
+            }
+        }
+. If you see deeply you will see that the equation is same as recursive equation except for step 3 mentioned changes.
+
+Entire code DP tabular code is:
+
+public int lengthOfLIS(int[] nums) {
+        //return solve(nums); 
+        return solve2(nums, nums.length, nums.length);
+    }
+    
+    public int solve(int nums[])
+    {
+        int t[][] = new int[nums.length+1][nums.length+1];
+        for(int i =0; i< nums.length+1; i++)
+        {
+            for(int j =0; j<nums.length+1; j++)
+            {
+                if(i == 0)
+                {
+                    t[i][j] = 0;
+                }
+            }
+        }
+        
+        for(int i =1; i< nums.length+1; i++)
+        {
+            for(int j =1; j<nums.length+1; j++)
+            {
+                if(j == nums.length || nums[i-1] < nums[j])
+                {
+                    t[i][j] = Math.max(t[i-1][j], t[i-1][i-1]+1);
+                }
+                else
+                    t[i][j] = t[i-1][j];
+                
+            }
+        }
+        
+        return t[nums.length][nums.length];
+    }
+    
