@@ -1,0 +1,40 @@
+#include <bits/stdc++.h>
+using namespace std;
+ void maxProduct(vector<int>& arr) 
+    {
+       int n=arr.size();
+        sort(arr.begin(),arr.end());
+        unordered_map<int,int>mp;
+        for(int i=0;i<n;i++){
+            mp[arr[i]]=i;
+        }
+        
+        long ans=0;
+        vector<long>dp(n,1);
+        for(int i=0;i<n;i++){
+            for(int j=0;j<n;j++){
+                if(i!=j){
+                    if(arr[i]%arr[j]==0){
+                        if(mp.find(arr[i]/arr[j])!=mp.end()){
+                            int k=mp[arr[i]/arr[j]];
+                            
+                            cout<<dp[i]<<" "<<dp[j]<<" "<<dp[k]<<endl;
+                            dp[i]+=(dp[j]*dp[k]);//left child multiply right child 
+                        }
+                    }
+                }
+            }
+    }
+    
+    for(int i=0;i<n;i++)
+    {
+        cout<<dp[i]<<" ";
+    }
+    
+    }
+int main() {
+    
+vector<int> nums{2,4,5,10};
+maxProduct(nums); 
+	return 0;
+}
