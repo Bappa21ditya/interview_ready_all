@@ -39,3 +39,75 @@ public:
         return groups;
     }
 };
+
+===================================================================================
+class Solution {
+public:
+    
+vector<int>p;
+vector<int>rank;
+    
+int find(int x)
+{
+    if(p[x]!=x)
+      p[x]=find(p[x]);
+        
+        return p[x];
+}
+        
+void union1(int x,int y)
+{
+    int a=find(x);
+    int b=find(y);
+    if(rank[a]<rank[b])
+        p[a]=b;
+    else if(rank[b]<rank[a])
+         p[b]=a;
+    else
+        p[b]=a;
+         rank[a]=rank[a]+1;        
+}    
+   
+
+    int findCircleNum(vector<vector<int>>& isConnected) {
+        int n=isConnected.size();
+        int res=0;
+        p.resize(n);
+        rank.resize(n);
+        for(int i=0;i<n;i++)
+        {
+            p[i]=i;
+            rank[i]=1;
+        }
+        
+        for(int i=0;i<n;i++)
+        {
+            for(int j=0;j<i;j++)
+            {
+                if(i==j)
+                    continue;
+                
+                if(isConnected[i][j]==1)
+                {
+                     int a=i;
+                     int b=j;
+                     int x=find(a);
+                     int y=find(b);
+                        union1(x,y);
+                            
+                    }
+                    
+                    
+                }
+            }
+        
+        for(int i=0;i<n;i++)
+        {
+            if(p[i]==i)
+                res++;
+        }
+        
+        return res;
+        }
+        
+};
