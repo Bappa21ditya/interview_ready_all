@@ -1,0 +1,33 @@
+class Solution {
+public:
+    // int t1[10005];
+    vector<int>t1;
+    bool solve(int i,int n,vector<int>& nums)
+    {
+        // if it reaches the end then true
+        if(i==n)
+            return true;
+        if(t1[i]!=-1)
+            return t1[i];
+        
+        
+    // int reacable= i+nums[i]  loop from i to nums[i]+i
+        // i=0,nums[i]=2 ,j=1,j=2 two times  solved will be called
+        
+        for(int j=1;j<=nums[i];j++)
+        {
+            if(solve(i+j,n,nums))
+                return t1[i]=true;
+                
+        }
+        return t1[i] =false;
+        
+    }
+    bool canJump(vector<int>& nums) {
+         // t1.resize(nums.size());
+        // memset(t1,-1,sizeof(t1));
+        t1.assign(nums.size(),-1);
+        return solve(0,nums.size()-1,nums);
+        
+    }
+};
