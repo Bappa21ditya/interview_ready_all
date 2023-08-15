@@ -1,0 +1,38 @@
+class Solution {
+public:
+    vector<vector<int>> insert(vector<vector<int>>& intervals, vector<int>& newInterval) {
+        vector<vector<int>> vect=intervals;
+        vect.push_back(newInterval);
+        sort(vect.begin(),vect.end());
+          vector<vector<int>> res;
+        int t1=vect[0][0];
+        int t2=vect[0][1];
+        for(int i=1;i<vect.size();i++)
+        {
+            int x=vect[i][0];
+            int y=vect[i][1];
+            if(t2>=x)
+            {
+                t2=max(t2,y);
+            }
+            else
+            {
+                vector<int>ans;
+                ans.push_back(t1);
+                ans.push_back(t2);
+                res.push_back(ans);
+                
+                t1=x;
+                t2=y;
+            }
+        }
+                 vector<int>ans;
+                ans.push_back(t1);
+                ans.push_back(t2);
+                res.push_back(ans);
+                
+               return res;
+
+        
+    }
+};
