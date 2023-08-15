@@ -1,3 +1,41 @@
+
+class Solution {
+public:
+    vector<vector<int>> merge(vector<vector<int>>& intervals) {
+         vector<vector<int>>res;
+        sort(intervals.begin(),intervals.end());
+        int t1=intervals[0][0];
+        int t2=intervals[0][1];
+        for(int i=1;i<intervals.size();i++)
+        {
+            int x=intervals[i][0];
+            int y=intervals[i][1];
+            if(t2>=x)
+            {
+              t2=max(t2,y);
+            
+            }
+            else
+            {
+                vector<int>ans;
+                ans.push_back(t1);
+                ans.push_back(t2);
+                res.push_back(ans);
+                
+                t1=x;
+                t2=y; 
+            }
+        }
+        
+                vector<int>ans;
+                ans.push_back(t1);
+                ans.push_back(t2);
+                res.push_back(ans);
+        
+        return res;
+    }
+};
+=========================================================================================================================================
 https://www.youtube.com/watch?v=2JzRBPFYbKE&t=166s
 
 class Solution {
