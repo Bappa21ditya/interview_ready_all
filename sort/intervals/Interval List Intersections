@@ -1,0 +1,27 @@
+class Solution {
+public:
+    vector<vector<int>> intervalIntersection(vector<vector<int>>& firstList, vector<vector<int>>& secondList) {
+        vector<vector<int>>ans;
+         int a=0 ,b=firstList.size(); 
+        int i=0,j=secondList.size();      
+        while(a!=b&&i!=j)//Till the end of either vector is encountered
+        {
+            int x=max(firstList[a][0],secondList[i][0]);//Generating the intervals 
+            int y=min(firstList[a][1],secondList[i][1]);//Generating the intervals
+            if(x<=y)//The Generated Interval is Valid only if X<Y so we push it in our answer array
+            ans.push_back(vector<int>{x,y});
+            /*This condin is used because there might me a case when multiple intervals may lie in one single interval in either of the array.
+            Eg: FirsList :  [[1,10],[12,14]]
+                SecondList: [[2,3],[4,7],[8,13]]
+                Since in the interval [1,10] from the first list there lies 3 groups from secondList we need to keep the index of FIrstList fixed while we keep increasing the index of Second List in order to accomodate the elements.
+               
+*/
+               if(firstList[a][1]>secondList[i][1])
+                 i++;
+               else
+                  a++;
+          
+        }
+        return ans;
+    }
+};
