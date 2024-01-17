@@ -1,0 +1,75 @@
+#include<bits/stdc++.h>
+using namespace std;
+void dfs(int node, vector<int> adj[], vector<bool> &vis,stack<int>&res)
+{
+    vis[node]=true;
+    for(auto it:adj[node])
+    {
+        if(!vis[it])
+        {
+            dfs(it,adj,vis,res);
+        }
+    }
+    // cout<<node<<" ";
+    res.push(node);
+    
+}
+int main()
+{
+    int v,e;
+    cin>>v>>e;
+    vector<int> adj[v];
+     vector<bool>vis(v,0);
+    vector<int>indeg(v);
+    queue<int> q;
+    for(int i=0;i<e;i++)
+    {
+        int a,b;
+        cin>>a>>b;
+        adj[a].push_back(b);
+        indeg[b]++;
+    }
+   for(int i=0;i<v;i++)
+   {
+       if(indeg[i]==0)
+         q.push(i);
+   }
+   while(!q.empty())
+   {
+       
+       int node=q.front();
+       q.pop();
+       cout<<node<<" ";
+       for(auto it:adj[node])
+       {
+           indeg[it]--;
+           if(indeg[it]==0)
+           {
+               q.push(it);
+           }
+       }
+   }
+}
+
+6
+6
+5 0
+4 0
+4 1
+5 2
+2 3
+3 1
+
+
+
+
+
+
+
+
+
+
+
+
+
+
