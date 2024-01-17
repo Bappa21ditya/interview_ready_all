@@ -1,0 +1,52 @@
+#include<bits/stdc++.h>
+using namespace std;
+void dfs(int node, vector<int> adj[], vector<bool> &vis,stack<int>&res)
+{
+    vis[node]=true;
+    for(auto it:adj[node])
+    {
+        if(!vis[it])
+        {
+            dfs(it,adj,vis,res);
+        }
+    }
+    // cout<<node<<" ";
+    res.push(node);
+    
+}
+int main()
+{
+    int v,e;
+    cin>>v>>e;
+    vector<int> adj[v+1];
+    vector<bool>vis(v+1,0);
+    for(int i=1;i<=v;i++)
+    {
+        int a,b;
+        cin>>a>>b;
+        adj[a].push_back(b);
+    }
+    stack<int >res;
+    for(int i=0;i<v;i++)
+    {
+        if(!vis[i])
+        {
+         dfs(i,adj,vis,res);
+        }
+    }
+     while(!res.empty())
+     {
+         cout<<res.top()<<" ";
+         res.pop();
+     }
+}
+
+
+6
+6
+0 5
+4 5
+4 1
+0 2
+2 3
+3 1
