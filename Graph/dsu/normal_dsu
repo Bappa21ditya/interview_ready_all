@@ -1,0 +1,67 @@
+#include<bits/stdc++.h>
+using namespace std;
+vector<int>p(1001);
+vector<int>r(1001);
+int find(int x)
+{
+    // if(p[x]==x)
+    //   return x;
+    // return find(p[x]);  
+    
+     if(p[x]!=x)
+      p[x]=find(p[x]);
+        
+        return p[x];
+}
+// void union1(int a,int b)
+// {
+//     int x=find(a);
+//     int y=find(b);
+    
+//     if(x==y)
+//      {
+//      return; 
+//      }
+//   if(rank[x]<rank[y])
+//       {
+//           p[x]=y;
+//       }
+//       else if(rank[x]>rank[y])
+//       {
+//           p[y]=x;
+//       }
+//       else
+//       {
+//           p[y]=x;
+//           rank[x]=rank[x]+1;
+//       }
+// }
+
+
+void union1(int x,int y)
+{
+    int a=find(x);
+    int b=find(y);
+    if(r[a]<r[b])
+        p[a]=b;
+    else if(r[b]<r[a])
+         p[b]=a;
+    else
+        p[b]=a;
+         r[a]=r[a]+1;        
+}    
+   
+int main()
+{
+    int x=10;
+    for(int i=0;i<=10;i++)
+    {
+        p[i]=i;
+        r[i]=1;
+    }
+    union1(1,2);
+    union1(2,3);
+    union1(4,5);
+    
+    return 0;
+}
