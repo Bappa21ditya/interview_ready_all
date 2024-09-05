@@ -1,3 +1,7 @@
+RoadMap:
+https://www.codechef.com/roadmap/data-structures-and-algorithms
+
+
 
 # Project Title
 MY List   ---https://docs.google.com/spreadsheets/d/11Kiaq5r0K0tIXnT7jF6N1brn1lRYLSOZK6uz43QjDzw/edit?gid=782922309#gid=782922309
@@ -33,6 +37,12 @@ https://leetcode.com/discuss/general-discussion/662866/Dynamic-Programming-for-P
 
 Trees All Patterns:
   https://leetcode.com/discuss/study-guide/1337373/tree-question-pattern-2021-placement
+  https://leetcode.com/discuss/study-guide/5020529/Master-Tree-Patterns/
+  https://leetcode.com/discuss/study-guide/1212004/Binary-Trees-study-guide
+
+
+Segment Tree
+ https://leetcode.com/articles/a-recursive-approach-to-segment-trees-range-sum-queries-lazy-propagation/
 
 
 
