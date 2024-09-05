@@ -31,6 +31,9 @@ https://leetcode.com/discuss/general-discussion/662866/Dynamic-Programming-for-P
  https://leetcode.com/discuss/general-discussion/1125779/Dynamic-programming-on-subsets-with-examples-explained
  https://blog.algomaster.io/p/20-patterns-to-master-dynamic-programming?utm_source=publication-search  (LIst of Dp Top 20 patterns)
 
+Trees All Patterns:
+  https://leetcode.com/discuss/study-guide/1337373/tree-question-pattern-2021-placement
+
 
 
 
