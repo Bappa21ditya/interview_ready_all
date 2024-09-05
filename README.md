@@ -48,6 +48,9 @@ Greedy
 https://leetcode.com/discuss/general-discussion/1061059/ABCs-of-Greedy
 https://leetcode.com/discuss/general-discussion/669996/greedy-for-beginners-problems-sample-solutions
 
+Linekd List:
+ https://leetcode.com/problems/add-two-numbers/solutions/1340/A-summary-about-how-to-solve-Linked-List-problem-C++/
+
 
 
 
