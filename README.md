@@ -13,11 +13,15 @@ Graph ALL Sample by pattern
   https://leetcode.com/discuss/study-guide/2043791/Graph-All-in-one-oror-Must-watch-for-Beginners
   https://leetcode.com/discuss/interview-question/753236/List-of-graph-algorithms-for-coding-interview
   https://leetcode.com/discuss/study-guide/1326900/graph-algorithms-problems-to-practice
+
 Disjoint set union
   https://leetcode.com/discuss/general-discussion/1072418/Disjoint-Set-Union-(DSU)Union-Find-A-Complete-Guide
 
 Dynamic Programming
   https://medium.com/@andrewsouthard1/dynamic-programming-recursion-memoization-and-bottom-up-algorithms-61c882d1c7e  (Medium Article about Dp )
+  https://www.youtube.com/watch?v=nqowUJzG-iM&list=PL_z_8CaSLPWekqhdCPmFohncHwz8TY2Go   (Aditya verma YT DP playlist)
+ 
+  
 
  https://leetcode.com/discuss/study-guide/1437879/dynamic-programming-patterns
  https://leetcode.com/discuss/study-guide/1490172/Dynamic-programming-is-simple
