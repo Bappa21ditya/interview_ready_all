@@ -44,6 +44,10 @@ Trees All Patterns:
 Segment Tree
  https://leetcode.com/articles/a-recursive-approach-to-segment-trees-range-sum-queries-lazy-propagation/
 
+Greedy 
+https://leetcode.com/discuss/general-discussion/1061059/ABCs-of-Greedy
+https://leetcode.com/discuss/general-discussion/669996/greedy-for-beginners-problems-sample-solutions
+
 
 
 
